@@ -36,3 +36,74 @@
     transform: rotate(360deg);
   }
 }
+
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding: 0.75rem;
+  background: linear-gradient(135deg, #7fbfff, #dceeff);
+  box-shadow: 0 6px 20px rgba(26, 43, 80, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20%;
+  color: #1a2b50;
+  font-family: 'Inter', sans-serif;
+}
+
+.searchForm {
+  width: 25%;
+  display: flex;
+  align-items: center;
+}
+
+.searchForm input {
+  width: 80%;
+  height: 1.5rem;
+  border-radius: 1rem;
+  border-color: #61dafb;
+  padding: 0.5rem 0.75rem;
+}
+
+.searchForm button {
+  background-image: url("./Assets/search-icon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  border-radius: 22%;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  margin-left: 1rem;
+}
+
+.searchForm button:hover {
+  filter: brightness(1.2);
+  transform: scale(1.1);
+  transition: transform 0.2s ease, filter 0.2s ease;
+} 
+
+.searchForm button:active {
+  transform: scale(0.95);
+  filter: brightness(0.9);
+}
+
+main {
+  height: 80rem;
+}
+
+footer {
+  justify-self: end;
+  width: 100%;
+  margin-top: auto;
+  background-color: #f2f2f2;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  color: #666;
+  border-top: 1px solid #ddd;
+}
