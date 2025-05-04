@@ -7,10 +7,10 @@ export function Articles() {
     const array = articles.array;
 
     return (
-        <>
+        <div className="articles">
           {(array.length > 0) ? (array.map((obj) => {
             return (<article key={obj.id} ><Post obj={obj} /></article>)
           })) : (<span>No articles available</span>)}
-        </>
+        </div>
     );
 }
