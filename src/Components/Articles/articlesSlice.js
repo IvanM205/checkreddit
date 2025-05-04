@@ -1,15 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import searchIcon from '../../Assets/search-icon.png';
+import { v4 as uuidv4 } from 'uuid';
+// import searchIcon from '../../Assets/search-icon.png';
 
 const initialState = {
     articles: {
         subreddit: null,
-        array: [{
-            title: "Default Post",
-            imgSrc: searchIcon,
-            author: 'Default Author',
-            commentsNum: 420
-        }]
+        array: []
     }
 };
 
@@ -19,9 +15,13 @@ const articlesSlice = createSlice({
     reducers: {
         addArticle: (state, action) => {
             state.articles.array.push(action.payload);
+            const idx = state.articles.array.length;
+            state.articles.array[idx-1].id = uuidv4();
         },
         removeArticle: (state, action) => {
-            state.articles.array.filter(article => article.id === action.payload.id);
+            state.articles.array = state.articles.array.filter(
+                article => (article.id !== action.payload)
+            );
         },
         removeAll: (state) => {
             state.articles.array = [];
@@ -33,3 +33,13 @@ export const selectArticles = (state) => state.articles.articles;
 export const { addArticle, removeArticle, removeAll } = articlesSlice.actions;
 
 export default articlesSlice.reducer;
+
+
+/*
+{
+    title: "Default Post",
+    imgSrc: '../../Assets/search-icon.png',
+    author: 'Default Author',
+    commentsNum: 420
+}
+*/

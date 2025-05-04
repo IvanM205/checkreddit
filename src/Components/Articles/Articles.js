@@ -8,8 +8,8 @@ export function Articles() {
 
     return (
         <>
-          {(array.length > 0) ? (array.map((obj, index) => {
-             return (<article key={index} ><Post obj={obj} /></article>)
+          {(array.length > 0) ? (array.map((obj) => {
+            return (<article key={obj.id} ><Post obj={obj} /></article>)
           })) : (<span>No articles available</span>)}
         </>
     );
