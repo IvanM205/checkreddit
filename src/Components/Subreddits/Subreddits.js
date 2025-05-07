@@ -8,11 +8,13 @@ export function Subreddits() {
     return (
         <div className="subreddits">
           <h2>Subreddits</h2>
-          {(array.length > 0) ? (array.map(obj => {
-            return (<article key={obj.id}>
-                <Subreddit obj={obj} />
-            </article>)
-          })) : (<span>No subreddits available</span>)}
+          <div className="subreddits-content">
+            {(array.length > 0) ? (array.map(obj => {
+              return (<article key={obj.id}>
+                  <Subreddit obj={obj} />
+              </article>)
+            })) : (<span>No subreddits available</span>)}
+          </div>
         </div>
     );
 }
