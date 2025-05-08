@@ -115,8 +115,9 @@ footer {
 }
 
 .articles {
-  min-width: 50%;
+  min-width: 60%;
   min-height: 20rem;
+  padding: 1rem;
   margin: 2rem;
   background: linear-gradient(135deg, #7fbfff, #dceeff);
   border-radius: 2rem;
@@ -129,9 +130,13 @@ footer {
 .articles span {
   color: #1a2b50;
   font-family: 'Inter', sans-serif;
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: 700;
   text-align: center;
+}
+
+.articles article {
+  width: 95%;
 }
 
 .subreddits {
