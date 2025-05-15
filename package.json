@@ -2,6 +2,7 @@
   "name": "check-reddit",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://www.reddit.com",
   "dependencies": {
     "@reduxjs/toolkit": "^2.7.0",
     "@testing-library/dom": "^10.4.0",

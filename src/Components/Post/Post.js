@@ -1,6 +1,9 @@
 import './Post.css';
+import { timeAgo } from '../../Helpers/timeAgo';
 
 export function Post({ obj }) {
+    
+    const time = timeAgo(obj.created);
     return (
         <div className='card'>
             <div className='post-wrapper'>
@@ -14,7 +17,7 @@ export function Post({ obj }) {
                     </div>
                     <div className='post-details'>
                         <span className='author-details'>{obj.author}</span>
-                        <span className='ago'>HERE HOW long ago</span>
+                        <span className='ago'>{time}</span>
                         <span className='post-comments-container'>
                             <button>Comments</button>
                             <span>{obj.commentsNum}</span>

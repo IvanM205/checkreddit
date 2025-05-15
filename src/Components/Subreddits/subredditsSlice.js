@@ -3,7 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 const initialState = {
     subreddits: {
-        array: []
+        array: [],
+        chosen: null,
     }
 }
 
@@ -19,14 +20,18 @@ const subredditsSlice = createSlice({
         removeSubreddit: (state, action) => {
             state.subreddits.array = state.subreddits.array.filter(subreddit => (subreddit.id !== action.payload));
         },
-        removeAll: (state) => {
+        removeAllSubreddits: (state) => {
             state.subreddits.array = [];
+        },
+        chooseSubreddit: (state, action) => {
+            state.subreddits.chosen = action.payload;
         }
     }
 })
 
 export const selectSubreddits = (state) => state.subreddits.subreddits;
-export const { addSubreddit, removeSubreddit, removeAll } = subredditsSlice.actions;
+export const selectChosen = (state) => state.subreddits.subreddits.chosen;
+export const { addSubreddit, removeSubreddit, removeAllSubreddits, chooseSubreddit } = subredditsSlice.actions;
 
 export default subredditsSlice.reducer;
 

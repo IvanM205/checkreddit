@@ -116,14 +116,14 @@ footer {
 
 .articles {
   min-width: 60%;
-  min-height: 20rem;
-  padding: 1rem;
+  min-height: 10rem;
+  padding: 2rem 0rem;
   margin: 2rem;
   background: linear-gradient(135deg, #7fbfff, #dceeff);
   border-radius: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -153,13 +153,15 @@ footer {
 .subreddits h2 {
   margin-top: 1rem;
   margin-bottom: 0rem;
+  text-align: center;
+  width: 100%;
 }
 
 .subreddits-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 1rem;
+  align-items: flex-start;
+  padding: 1.5rem;
   padding-bottom: 1.5rem;
 }
