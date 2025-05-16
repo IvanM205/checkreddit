@@ -46,14 +46,26 @@ export function Post({ obj }) {
             case 'video':
                 return (
                     <div className='post-video-container'>
-                        {obj.imgSrc ? (
-                            <div className='video-thumbnail'>
+                        {obj.videoUrl ? (
+                            <div className='video-player'>
+                                <video 
+                                    controls 
+                                    preload="metadata"
+                                    poster={obj.imgSrc} 
+                                    className='reddit-video'
+                                >
+                                    <source src={obj.videoUrl} type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        ) : obj.imgSrc ? (
+                            <div className='video-thumbnail' onClick={() => window.open(obj.url, '_blank')}>
                                 <img src={obj.imgSrc} alt={obj.title} />
                                 <div className='video-play-icon'>▶</div>
                             </div>
                         ) : (
-                            <div className='video-placeholder'>
-                                <span>Video Content</span>
+                            <div className='video-placeholder' onClick={() => window.open(obj.url, '_blank')}>
+                                <span>Video Content (Click to View on Reddit)</span>
                             </div>
                         )}
                     </div>

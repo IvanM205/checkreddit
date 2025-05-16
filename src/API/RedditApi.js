@@ -1,18 +1,19 @@
 
-
 export async function fetchReddit(subredditName=null) {
     try {
-        let urlFetch = ''
+        let urlFetch = '';
         if (subredditName !== null) {
             urlFetch = `/r/${subredditName}/.json`;
             console.log(subredditName);
         } else {
             urlFetch = "/.json";
         }
+        
         const response = await fetch(urlFetch);
         if (!response.ok) {
-            throw new Error("Network respone was not ok");
-        };
+            throw new Error("Network response was not ok");
+        }
+        
         const data = await response.json();
         const posts = data.data.children.map(post => {
             // Determine post type and set appropriate image source
@@ -37,9 +38,16 @@ export async function fetchReddit(subredditName=null) {
                 postType = 'image';
             }
             // Handle Reddit video
-            else if (postData.is_video && postData.media?.reddit_video?.fallback_url) {
-                imgSrc = postData.thumbnail !== 'default' ? postData.thumbnail : null;
+            else if ((postData.is_video || postData.domain === "v.redd.it") && 
+                    (postData.media?.reddit_video?.fallback_url || postData.secure_media?.reddit_video?.fallback_url)) {
+                imgSrc = postData.thumbnail && postData.thumbnail !== 'default' ? postData.thumbnail : null;
                 postType = 'video';
+                // Add video URL to the object
+                const videoUrl = postData.media?.reddit_video?.fallback_url || 
+                                postData.secure_media?.reddit_video?.fallback_url;
+                if (videoUrl) {
+                    postData.videoUrl = videoUrl;
+                }
             }
             // Handle image previews for links when available
             else if (postData.thumbnail && postData.thumbnail !== 'self' && postData.thumbnail !== 'default') {
@@ -58,7 +66,8 @@ export async function fetchReddit(subredditName=null) {
                 url: postData.url,
                 selftext: selftext,
                 permalink: postData.permalink,
-                subreddit: postData.subreddit
+                subreddit: postData.subreddit,
+                videoUrl: postData.videoUrl || null
             };
         });
         
