@@ -3,8 +3,8 @@ import { Articles } from "../Articles/Articles";
 import { Subreddits } from "../Subreddits/Subreddits";
 import { fetchReddit } from "../../API/RedditApi";
 import { subreddits } from "../../API/subredditsApi";
-import { addArticle, removeArticle, removeAll } from "../Articles/articlesSlice";
-import { addSubreddit, removeSubreddit, removeAllSubreddits } from "../Subreddits/subredditsSlice";
+import { addArticle, removeAll } from "../Articles/articlesSlice";
+import { addSubreddit, removeAllSubreddits } from "../Subreddits/subredditsSlice";
 import { selectChosen } from "../Subreddits/subredditsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -27,6 +27,7 @@ export function Home() {
         const arraySub = await subreddits();
         arraySub.forEach(obj => dispatch(addSubreddit(obj)));
       }
+      dispatch(removeAllSubreddits());
       loadSubreddits();
     }, [dispatch]);
 

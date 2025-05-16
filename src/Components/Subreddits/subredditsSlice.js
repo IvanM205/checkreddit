@@ -35,11 +35,3 @@ export const { addSubreddit, removeSubreddit, removeAllSubreddits, chooseSubredd
 
 export default subredditsSlice.reducer;
 
-
-/*
-{
-  title: "Subreddit title",
-  src: "src%%%",
-  articles: []
-}
-*/
