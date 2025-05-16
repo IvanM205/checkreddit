@@ -15,6 +15,7 @@ export async function fetchReddit(subredditName=null) {
         }
         
         const data = await response.json();
+        console.log(data.data.children);
         const posts = data.data.children.map(post => {
             // Determine post type and set appropriate image source
             const postData = post.data;
@@ -67,7 +68,8 @@ export async function fetchReddit(subredditName=null) {
                 selftext: selftext,
                 permalink: postData.permalink,
                 subreddit: postData.subreddit,
-                videoUrl: postData.videoUrl || null
+                videoUrl: postData.videoUrl || null,
+                score: postData.score || 0
             };
         });
         

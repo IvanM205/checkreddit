@@ -12,7 +12,7 @@ export async function subreddits() {
         console.log("Subredits", data);
         const subreddits = data.data.children.map(child => ({
                 title: child.data.title,
-                src: child.data.icon_img || child.data.community_icon,
+                src: child.data.icon_img,
                 name: child.data.display_name
             }));
         return subreddits;

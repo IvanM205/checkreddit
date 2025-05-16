@@ -15,11 +15,12 @@ const articlesSlice = createSlice({
         addArticle: (state, action) => {
             state.articles.array.push(action.payload);
             const idx = state.articles.array.length;
-            state.articles.array[idx-1].id = uuidv4();
+            state.articles.array[idx-1].idx = uuidv4();
         },
         removeArticle: (state, action) => {
             state.articles.array = state.articles.array.filter(
                 article => (article.id !== action.payload)
+                
             );
         },
         removeAll: (state) => {

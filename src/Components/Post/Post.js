@@ -1,8 +1,25 @@
 import './Post.css';
+import React, {useState} from 'react';
 import { timeAgo } from '../../Helpers/timeAgo';
+import { Comment } from '../Comment/Comment';
+import { fetchCommentsByPostId } from '../../API/commentsAPI';
+import { v4 as uuidv4 } from 'uuid';
+
 
 export function Post({ obj }) {
     const time = timeAgo(obj.created);
+    const [commentsOn, setCommentsOn] = useState(false);
+    const [commentsArr, setCommentsArr] = useState([]);
+
+    async function handleClickComments() {
+        if (!commentsOn) {
+            setCommentsOn(true);
+            setCommentsArr(await fetchCommentsByPostId(obj.id));
+        } else {
+            setCommentsOn(false);
+            setCommentsArr([]);
+        }
+    }
     
     // Render different content based on post type
     const renderPostContent = () => {
@@ -110,21 +127,29 @@ export function Post({ obj }) {
         <div className='card'>
             <div className='post-wrapper'>
                 <div className='post-votes-container'>
-                    {/* Your voting buttons here */}
+                    <button className='vote-button upvote'>▲</button>
+                    <span className='vote-score'>{obj.score || 0}</span>
+                    <button className='vote-button downvote'>▼</button>
                 </div>
                 <div className='post-container'>
                     <div className='post-title'>{obj.title}</div>
                     
-                    {/* Render appropriate content based on post type */}
-                    {renderPostContent()}
+                    <div className='renderPost'>
+                        {renderPostContent()}
+                    </div>
                     
                     <div className='post-details'>
                         <span className='author-details'>{obj.author}</span>
                         <span className='ago'>{time}</span>
                         <span className='post-comments-container'>
-                            <button>Comments</button>
+                            <button onClick={handleClickComments}>Comments</button>
                             <span>{obj.commentsNum}</span>
                         </span>
+                    </div>
+                    <div className='comments' style={{ display: commentsOn ? 'inline-block' : 'none' }}>
+                        {(commentsOn) ? commentsArr.map((commentData) => {
+                            return(<Comment key={uuidv4()} commentData={commentData}/>)
+                        }) : null }
                     </div>
                 </div>
             </div>
