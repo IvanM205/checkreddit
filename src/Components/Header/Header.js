@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { setSearch } from './searchSlice';
 import { useDispatch } from 'react-redux';
-
+import icon from '../../Assets/checkreddit-icon.png';
 export function Header() {
     const placeHolder = 'Search'
     const [ value, setValue] = useState('');
@@ -14,6 +14,7 @@ export function Header() {
 
     return (
         <header>
+            <img className="header-icon" src={icon} />
             <h2>CheckReddit</h2>
             <form className="searchForm" onSubmit={submitHandler}>
                 <input type="text" name="searchBar" id="searchBar" 

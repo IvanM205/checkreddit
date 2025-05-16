@@ -49,9 +49,15 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   gap: 20%;
   color: #1a2b50;
   font-family: 'Inter', sans-serif;
+}
+
+.header-icon {
+  width: 4rem;
+  border-radius: 50%;
 }
 
 .searchForm {
@@ -125,6 +131,7 @@ footer {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  flex-shrink: 1;
 }
 
 .articles span {
@@ -143,11 +150,12 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 25%;
+  max-width: 25%;
   min-height: 20rem;
   margin: 2rem;
   background: linear-gradient(135deg, #7fbfff, #dceeff);
   border-radius: 2rem;
+  flex-shrink: 1;
 }
 
 .subreddits h2 {
@@ -164,4 +172,11 @@ footer {
   align-items: flex-start;
   padding: 1.5rem;
   padding-bottom: 1.5rem;
+  flex-shrink: 1;
+}
+
+.subreddits-content article {
+  width: 100%;
+  padding: 0rem 1rem;
+  flex-shrink: 1;
 }
