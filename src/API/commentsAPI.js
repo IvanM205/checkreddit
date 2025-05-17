@@ -1,7 +1,8 @@
 
 export async function fetchCommentsByPostId(postId) {
     try {
-        const url = `/comments/${postId}.json`;
+        // const url = `/comments/${postId}.json`;
+        const url = `https://www.reddit.com/r/${subredditName}/.json`;
         const response = await fetch(url);
 
         if (!response.ok) {

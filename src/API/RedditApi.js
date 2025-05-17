@@ -3,10 +3,12 @@ export async function fetchReddit(subredditName=null) {
     try {
         let urlFetch = '';
         if (subredditName !== null) {
-            urlFetch = `/r/${subredditName}/.json`;
+            urlFetch = `https://www.reddit.com/r/${subredditName}/.json`
+            // urlFetch = `/r/${subredditName}/.json`;
             console.log(subredditName);
         } else {
-            urlFetch = "/.json";
+            urlFetch = "https://www.reddit.com/.json";
+            // urlFetch = "/.json";
         }
         
         const response = await fetch(urlFetch);
