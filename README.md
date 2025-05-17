@@ -2,7 +2,7 @@
 
 **CheckReddit** is a responsive, feature-rich Reddit client built with React and Redux that provides a seamless browsing experience for Reddit content.
 
-> **Live Demo**: _Coming soon_
+> **Live Demo**: https://checkreddit.netlify.app/home
 
 ---
 

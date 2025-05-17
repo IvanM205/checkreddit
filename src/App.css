@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
 }
@@ -118,6 +122,8 @@ header {
 
 main {
   min-height: 40em;
+  display: flex;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 480px) {
