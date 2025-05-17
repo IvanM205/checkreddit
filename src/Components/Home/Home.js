@@ -29,7 +29,7 @@ export function Home() {
       dispatch(removeAll());
       loadArticles();
 
-    }, [subredditName, search.isSearching]);
+    }, [subredditName, search.isSearching, dispatch]);
 
     const prevSubredditName = useRef(subredditName);
 
@@ -40,17 +40,17 @@ export function Home() {
       }
       dispatch(removeAllSubreddits());
       loadSubreddits();
-    }, []);
+    }, [dispatch]);
     
     useEffect(() => {
       if (search.isSearching) {
-        articlesArray.map(article => {
+        articlesArray.forEach(article => {
           if (!article.title || !article.title.toLowerCase().includes(search.searchString.toLowerCase())) {
             dispatch(removeArticle(article.id));
           }
         })
       }
-    }, [search, articlesArray])
+    }, [search, articlesArray, dispatch])
     
 
     return (

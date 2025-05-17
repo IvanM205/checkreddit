@@ -14,7 +14,7 @@ export function Header() {
 
     return (
         <header>
-            <img className="header-icon" src={icon} />
+            <img className="header-icon" alt="header-icon" src={icon} />
             <h2>CheckReddit</h2>
             <form className="searchForm" onSubmit={submitHandler}>
                 <input type="text" name="searchBar" id="searchBar" 
