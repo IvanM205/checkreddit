@@ -17,6 +17,12 @@
   flex-shrink: 1;
 }
 
+@media only screen and (max-width: 1024px) {
+  .subreddit-btn {
+    height: 100px;
+  }
+}
+
 .subreddit-img-wrapper {
   width: 32px;
   height: 32px;
